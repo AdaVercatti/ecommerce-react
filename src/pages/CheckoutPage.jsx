@@ -1,7 +1,9 @@
 import './CheckoutPage.css'
 import './checkout-header.css'
 import Header from './components/Header';
+import { useNavigate } from 'react-router-dom'
 const CheckoutPage = () => {
+  const navigate = useNavigate()
   return (
     <>
       <header>Checkout</header>
@@ -177,7 +179,7 @@ const CheckoutPage = () => {
               <div className="payment-summary-money">$52.51</div>
             </div>
 
-            <button className="place-order-button button-primary">
+            <button onClick={() => navigate('/orders')} className="place-order-button button-primary">
               Place your order
             </button>
           </div>
