@@ -1,6 +1,11 @@
 import './Header.css'
 import { Link } from 'react-router';
-const Header = () => {
+import PropTypes from 'prop-types';
+const Header = ({cart}) => {
+  let totalItem = 0;
+  cart.forEach((cartItem)=>{
+    totalItem += cartItem.quantity
+  })
   return (
     <>
       <div className="header">
@@ -26,13 +31,19 @@ const Header = () => {
 
           <Link className="cart-link header-link" to="/checkout">
             <img className="cart-icon" src="images/icons/cart-icon.png" />
-            <div className="cart-quantity">3</div>
+            <div className="cart-quantity">{totalItem}</div>
             <div className="cart-text">Cart</div>
           </Link>
         </div>
       </div>
     </>
   );
+  
 };
+
+Header.propTypes = {
+  cart: PropTypes.array.isRequired
+};
+
 
 export default Header
