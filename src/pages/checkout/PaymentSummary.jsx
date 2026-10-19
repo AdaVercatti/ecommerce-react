@@ -50,6 +50,7 @@ const PaymentSummary = ({ paymentSummary, navigate ,loadCart}) => {
       </div>
 
       <button
+        data-testid="place-your-order-button"
         onClick={async() =>{
           await axios.post('/api/orders')
           await loadCart()

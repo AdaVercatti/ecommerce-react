@@ -7,9 +7,9 @@ const Product = ({ product, loadCart }) => {
   const [quantity, setQuantity] = useState(1);
   const [check, setCheck] = useState(false)
   return (
-    <div className="product-container">
+    <div className="product-container" data-testid="product-container">
       <div className="product-image-container">
-        <img className="product-image" src={product.image} />
+        <img className="product-image" src={product.image} data-testid="product-image"/>
       </div>
 
       <div className="product-name limit-text-to-2-lines">{product.name}</div>
@@ -17,6 +17,7 @@ const Product = ({ product, loadCart }) => {
       <div className="product-rating-container">
         <img
           className="product-rating-stars"
+          data-testid="product-rating-stars-image"
           src={`images/ratings/rating-${product.rating.stars * 10}.png`}
         />
         <div className="product-rating-count link-primary">87</div>
@@ -26,6 +27,7 @@ const Product = ({ product, loadCart }) => {
 
       <div className="product-quantity-container">
         <select
+          data-testid="quantity-selector"
           value={quantity}
           onChange={(event) => {
             const selectedValue = Number(event.target.value);
@@ -54,6 +56,7 @@ const Product = ({ product, loadCart }) => {
 
       <button
         className="add-to-cart-button button-primary"
+        data-testid="add-to-cart-button"
         onClick={async () => {
           await axios.post("/api/cart-items", {
             productId: product.id,

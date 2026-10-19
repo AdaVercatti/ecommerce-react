@@ -10,4 +10,12 @@ describe("formatMoney", () => {
     expect(moneyFormat(1090)).toBe("10.90");
     expect(moneyFormat(100)).toBe("1.00");
   });
+
+  it('works with 0',()=>{
+    expect(moneyFormat(0)).toBe('0.00')
+  })
+  it('works with negative numbers',()=>{
+    expect(moneyFormat(-999)).toBe('-9.99')
+    expect(moneyFormat(-100)).toBe('-1.00')
+  })
 });
